@@ -1,0 +1,138 @@
+/* Colores: los mismos que en las gráficas */
+:root {
+  --azul: #1f77b4;
+  --rojo: #d62728;
+  --verde: #2ca02c;
+  --naranja: #ff7f0e;
+  --gris: #F2EBEB;
+  --fondo: #D5DBE3;
+  --tinta: #F2EBEB;
+}
+
+.reveal-viewport {
+  background: url('txt_fondo.png'), linear-gradient(135deg, #D7DEDB, #232a36);
+}
+
+.reveal {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--tinta);
+  font-size: 34px;
+}
+
+.reveal h1, .reveal h2 {
+  font-family: inherit;
+  text-transform: none;
+  color: var(--tinta);
+  letter-spacing: -0.01em;
+}
+.reveal h1 { font-size: 2.3em; line-height: 1.1; }
+.reveal h2 { font-size: 1.35em; margin-bottom: 0.4em; }
+
+.antetitulo { color: var(--gris); font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.12em; }
+.subtitulo  { color: var(--azul); font-size: 0.85em; }
+.autor      { color: var(--gris); font-size: 0.6em; margin-top: 2em; }
+
+/* Gráficas */
+.reveal img.grafica {
+  max-height: 45vh;
+  max-width: 65%;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+ 
+}
+.reveal iframe.interactiva {
+  width: 100%;
+  height: 72vh;
+  border: none;
+}
+
+/* Hueco de una gráfica que aún no has exportado */
+.hueco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55vh;
+  border: 3px dashed #c9c9c9;
+  border-radius: 12px;
+  color: var(--gris);
+  font-size: 0.6em;
+}
+
+/* Dos gráficas lado a lado */
+.dos { display: flex; gap: 1em; justify-content: center; }
+.dos img.grafica { max-width: 49%; max-height: 60vh; }
+.dos .hueco { flex: 1; }
+
+/* Dos columnas de texto (Irlanda y Estonia) */
+.dos-columnas { display: flex; gap: 2em; text-align: left; }
+.dos-columnas > div { flex: 1; }
+.reveal h3 { font-family: inherit; font-size: 1em; color: var(--azul); text-transform: none; }
+
+.pie   { color: var(--gris); font-size: 0.55em; }
+.cifra { font-size: 0.8em; }
+.contador { color: var(--rojo); font-weight: 700; }
+.pequeno { font-size: 0.7em; }
+
+/* Hipótesis y veredicto */
+.hipotesis li { margin-bottom: 0.6em; }
+.veredicto { margin: 0 auto; font-size: 0.8em; }
+.veredicto td { padding: 0.4em 1em; border-bottom: 1px solid #ddd; }
+.veredicto .si     { color: var(--verde); font-weight: 700; }
+.veredicto .medias { color: var(--naranja); font-weight: 700; }
+.lema { font-size: 1.2em; font-weight: 700; color: var(--azul); margin-top: 1em; }
+
+/* El minifurrito: fuera de la pantalla hasta que GSAP lo mueve */
+#furrito {
+  position: fixed;
+  bottom: 12px;
+  left: -160px;
+  width: 120px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.reveal img.tarjeta {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(242, 235, 235, 0.85);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  background: url("txt_wood.png"), rgba(56, 54, 54, 0.85);
+}
+
+/* ===== Lienzo: zona donde se colocan cosas en las esquinas ===== */
+.lienzo { position: relative; height: 560px; }
+
+/* Las gráficas dentro del lienzo, más pequeñas para dejar sitio */
+.reveal .lienzo img.grafica { max-width: 64%; max-height: 420px; margin: 0; }
+
+/* Clases de posición: sirven para gráficas, cuadros o lo que sea */
+.arriba-izq { position: absolute; top: 0;    left: 0;  }
+.arriba-der { position: absolute; top: 0;    right: 0; }
+.abajo-izq  { position: absolute; bottom: 0; left: 0;  }
+.abajo-der  { position: absolute; bottom: 0; right: 0; }
+
+/* ===== Cuadro de texto que aparece solo (reutilizable) ===== */
+.cuadro-info {
+  width: 38%;
+  text-align: left;
+  background: rgba(20, 22, 27, 0.5);
+  color: #F2EBEB;
+  padding: 0.8em 1em;
+  border-radius: 14px;
+  font-size: 0.55em;
+  line-height: 1.4;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  opacity: 0;            /* empieza invisible, GSAP lo hace aparecer */
+}
+
+/* Mapa dentro del lienzo: más estrecho para dejar hueco al cuadro */
+.reveal .lienzo iframe.interactiva { width: 64%; height: 100%; }
+
+/* Cuadro centrado abajo y versión ancha */
+.abajo-centro { position: absolute; bottom: 0; left: 0; right: 0; margin: 0 auto; }
+.cuadro-info.ancho { width: 75%; }
+
+/* Dos gráficas lado a lado dentro del lienzo: más bajitas para dejar sitio al cuadro */
+.reveal .lienzo .dos { width: 100%; }
+.reveal .lienzo .dos img.grafica { max-width: 49%; max-height: 340px; }
